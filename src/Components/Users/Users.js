@@ -1,31 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../Users/Users.css";
+import User from "./User";
 import { fetchUsers } from "../redux/slices/userSlice";
+
 const Users = () => {
-  // redux get all users
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
   const users = useSelector((state) => state.user.users.data);
-  
+
   const [number, setNumber] = useState({});
-  console.log(number);
   const handleClick = (id) => {
     fetch(`https://reqres.in/api/users/${id}`)
       .then((res) => res.json())
       .then((data) => setNumber(data.data));
   };
+
   return (
     <div className="container">
-      {/* {users.length === 0 ? (
+      {/* {users?.length === 0 ? (
         <div className="spinner-border text-primary" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
         <div className="row">
-          {users.map((user) => (
+          {users?.map((user) => (
             <User key={user.id} user={user}></User>
           ))}
         </div>
@@ -46,11 +47,7 @@ const Users = () => {
                   {number?.first_name}
                   {number?.last_name}
                 </h5>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
+                <p className="card-text">{number?.email}</p>
               </div>
             </div>
           </div>
@@ -59,17 +56,24 @@ const Users = () => {
         <h1>Click any button</h1>
       )}
       {/* button according to users */}
-      <div className="pagination">
-        {users.map((singleUser, index) => (
-          <button
-            key={singleUser.id}
-            //   className={number === page ? "selected" : ""}
-            onClick={() => handleClick(singleUser.id)}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
+
+      {users?.length === 0 ? (
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      ) : (
+        <div className="pagination">
+          {users?.map((singleUser, index) => (
+            <button
+              key={singleUser.id}
+              //   className={number === page ? "selected" : ""}
+              onClick={() => handleClick(singleUser.id)}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

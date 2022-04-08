@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import users from "../fakeData.json";
 
 // First, create the thunk
 export const fetchUsers = createAsyncThunk("fetchSingleUser", async () => {
