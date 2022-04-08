@@ -1,0 +1,14 @@
+/* pagination button */
+.pagination {
+    width: 600px;
+    margin: auto;
+    box-shadow: 0 5px 20px gray;
+    padding: 8px 10px;
+  }
+  .pagination button {
+    padding: 20px;
+    background-color: rgb(73, 71, 73);
+    margin: 15px;
+    color: white;
+    border: 0;
+  }
