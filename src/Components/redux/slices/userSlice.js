@@ -5,7 +5,6 @@ export const fetchUsers = createAsyncThunk("fetchSingleUser", async () => {
   const response = await fetch("https://reqres.in/api/users?page=2").then(
     (res) => res.json()
   );
-  console.log(response.data);
   return response;
 });
 

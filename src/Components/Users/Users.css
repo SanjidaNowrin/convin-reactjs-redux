@@ -1,8 +1,8 @@
 /* pagination button */
 .pagination {
-    width: 600px;
+    width: 31rem;
     margin: auto;
-    box-shadow: 0 5px 20px gray;
+    box-shadow: 0 5px 20px rgb(231, 227, 227);
     padding: 8px 10px;
   }
   .pagination button {
@@ -11,4 +11,12 @@
     margin: 15px;
     color: white;
     border: 0;
+  }
+  .selected {
+    background-color: #00bcd9;
+    color: white;
+  }
+  .cardHover:hover {
+    transform: scale(1.03);
+    transition: transform 1s;
   }
