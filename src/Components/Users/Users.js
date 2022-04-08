@@ -47,7 +47,6 @@ const Users = () => {
           {users?.map((singleUser, index) => (
             <button
               key={singleUser.id}
-              // className={index && "selected" }
               onClick={() => handleClick(singleUser.id)}
             >
               {index + 1}
